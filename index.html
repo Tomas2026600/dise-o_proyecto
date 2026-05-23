@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Señas</title>
+
+    <link rel="stylesheet" href="diseño_app.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="dark">
+
+    <!-- BOTÓN MODO OSCURO / CLARO -->
+    <button class="theme-toggle" onclick="cambiarTema()">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+
+    <!-- ========================= -->
+    <!-- PANTALLA INICIAL -->   
+    <!-- ========================= -->
+
+    <section id="pantallaInicio" class="pantalla activa">
+
+        <div class="contenido-inicio">
+
+            <h1>Hola, bienvenido</h1>
+
+            <button class="btn-empezar" onclick="mostrarTraductor()">
+                <i class="fa-solid fa-play"></i>
+                Empezar a traducir
+            </button>
+
+            <div class="menu-inferior">
+                <span><i class="fa-solid fa-file-lines"></i> Transcripción</span>
+
+                <span><i class="fa-solid fa-wave-square"></i> Audio</span>
+
+                <span><i class="fa-solid fa-gear"></i> Configuración</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- PANTALLA TRADUCTOR -->
+    <!-- ========================= -->
+
+    <section id="pantallaTraductor" class="pantalla">
+
+        <div class="contenedor-traductor">
+
+            <!-- IZQUIERDA -->
+            <div class="camara-box">
+
+                <div class="barra-superior">
+                    <span class="circulo rojo"></span>
+                    <span class="circulo amarillo"></span>
+                    <span class="circulo verde"></span>
+                </div>
+
+                <div class="video-box">
+                    <img src="ls_imagen.jpg"
+                        alt="Persona haciendo señas">
+                </div>
+
+                <button class="btn-grabando">
+                    <i class="fa-solid fa-microphone"></i>
+                    Grabando...
+                </button>
+
+                <div class="controles">
+
+                    <button>
+                        <i class="fa-solid fa-video"></i>
+                        Detener
+                    </button>
+
+                    <button>
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- DERECHA -->
+            <div class="texto-box">
+
+                <h2>
+                    <span class="punto"></span>
+                    Traducción a <span class="azul">texto</span>
+                </h2>
+
+                <div class="texto-traduccion">
+                    Hola, ¿cómo estás?<br><br>
+                    Bienvenido al traductor de lenguaje de señas.
+                </div>
+
+                <button class="btn-escuchar">
+                    <i class="fa-solid fa-volume-high"></i>
+                    Escuchar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ESTADO -->
+        <div class="estado">
+            <i class="fa-solid fa-circle-check"></i>
+            Traducción completada con éxito
+        </div>
+
+
+        <!-- MENU INFERIOR -->
+        <div class="menu-inferior traductor-menu">
+
+            <span><i class="fa-solid fa-file-lines"></i> Transcripción</span>
+
+            <span><i class="fa-solid fa-wave-square"></i> Audio</span>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        // CAMBIAR PANTALLA
+
+        function mostrarTraductor() {
+
+            document.getElementById("pantallaInicio")
+                .classList.remove("activa");
+
+            document.getElementById("pantallaTraductor")
+                .classList.add("activa");
+        }
+
+
+        // MODO OSCURO / CLARO
+
+        function cambiarTema() {
+
+            const body = document.body;
+
+            const icono = document.querySelector(".theme-toggle i");
+
+            body.classList.toggle("light");
+
+            body.classList.toggle("dark");
+
+
+            if (body.classList.contains("light")) {
+
+                icono.className = "fa-solid fa-sun";
+
+            } else {
+
+                icono.className = "fa-solid fa-moon";
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

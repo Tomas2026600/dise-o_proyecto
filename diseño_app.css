@@ -1,0 +1,567 @@
+/* ========================= */
+/* CONFIGURACIÓN GENERAL */
+/* ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: 0.5s ease;
+    background: url("imagen_fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ========================= */
+/* VARIABLES */
+/* ========================= */
+
+body.dark {
+
+    --texto: #ffffff;
+    --subtexto: #b8c7ff;
+    --card: rgba(4, 10, 32, 0.55);
+    --card2: rgba(0, 0, 0, 0.25);
+    --borde: rgba(255, 255, 255, 0.08);
+
+    --verde1: #29e348;
+    --verde2: #08951f;
+
+    --azul1: #4d8dff;
+    --azul2: #0b2d8f;
+
+    --sombra: rgba(0, 0, 0, 0.55);
+
+}
+
+body.light {
+
+    --texto: #10203b;
+    --subtexto: #31425f;
+
+    --card: rgba(255, 255, 255, 0.6);
+    --card2: rgba(255, 255, 255, 0.35);
+
+    --borde: rgba(0, 0, 0, 0.08);
+
+    --verde1: #24d443;
+    --verde2: #0c9e25;
+
+    --azul1: #4a88ff;
+    --azul2: #1a49c2;
+
+    --sombra: rgba(0, 0, 0, 0.18);
+
+}
+
+/* ========================= */
+/* BOTÓN TEMA */
+/* ========================= */
+
+.theme-toggle {
+
+    position: fixed;
+    top: 25px;
+    right: 25px;
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-size: 22px;
+
+    color: white;
+
+    z-index: 999;
+
+    background: linear-gradient(145deg, #2a63ff, #091d61);
+
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+
+    transition: 0.4s ease;
+}
+
+.theme-toggle:hover {
+
+    transform: scale(1.12) rotate(10deg);
+
+    box-shadow: 0px 0px 25px rgba(77, 141, 255, 0.7);
+}
+
+/* ========================= */
+/* PANTALLAS */
+/* ========================= */
+
+.pantalla {
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    color: var(--texto);
+}
+
+.pantalla.activa {
+    display: flex;
+}
+
+/* ========================= */
+/* INICIO */
+/* ========================= */
+
+.contenido-inicio {
+    text-align: center;
+}
+
+.contenido-inicio h1 {
+
+    font-size: 72px;
+    margin-bottom: 60px;
+
+    color: #8fc3ff;
+
+    text-shadow: 0px 0px 25px rgba(0,0,0,0.4);
+
+    animation: aparecer 1.2s ease;
+}
+
+/* BOTÓN EMPEZAR */
+
+.btn-empezar {
+
+    border: none;
+
+    background: linear-gradient(180deg,
+            var(--verde1),
+            var(--verde2));
+
+    color: white;
+
+    padding: 24px 65px;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+
+    box-shadow: 0px 12px 30px var(--sombra);
+
+    animation: flotar 3s infinite ease-in-out;
+}
+
+.btn-empezar i {
+    margin-right: 15px;
+}
+
+.btn-empezar:hover {
+
+    transform: translateY(-8px) scale(1.05);
+
+    box-shadow: 0px 18px 35px rgba(36, 212, 67, 0.55);
+}
+
+.btn-empezar:active {
+    transform: scale(0.97);
+}
+
+/* MENÚ ABAJO */
+
+.menu-inferior {
+
+    margin-top: 100px;
+
+    display: flex;
+    gap: 50px;
+
+    padding: 20px 40px;
+
+    border-top: 1px solid var(--borde);
+
+    backdrop-filter: blur(10px);
+}
+
+.menu-inferior span {
+
+    color: var(--subtexto);
+
+    font-size: 24px;
+
+    transition: 0.3s;
+}
+
+.menu-inferior span:hover {
+
+    color: #4ca2ff;
+
+    transform: translateY(-4px);
+
+    cursor: pointer;
+}
+
+.menu-inferior i {
+    margin-right: 10px;
+}
+
+/* ========================= */
+/* TRADUCTOR */
+/* ========================= */
+
+.contenedor-traductor {
+
+    width: 88%;
+    max-width: 1450px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borde);
+
+    border-radius: 28px;
+
+    padding: 35px;
+
+    display: flex;
+
+    gap: 30px;
+
+    backdrop-filter: blur(14px);
+
+    box-shadow: 0px 15px 45px var(--sombra);
+
+    animation: aparecer 0.8s ease;
+}
+
+/* IZQUIERDA */
+
+.camara-box {
+
+    width: 50%;
+
+    background: var(--card2);
+
+    border-radius: 22px;
+
+    padding: 22px;
+}
+
+.barra-superior {
+
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.circulo {
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+}
+
+.rojo {
+    background: #ff5f56;
+}
+
+.amarillo {
+    background: #ffbd2e;
+}
+
+.verde {
+    background: #27c93f;
+}
+
+.video-box img {
+
+    width: 100%;
+    height: 460px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    transition: 0.5s ease;
+}
+
+.video-box img:hover {
+
+    transform: scale(1.02);
+
+    filter: brightness(1.05);
+}
+
+/* BOTÓN GRABAR */
+
+.btn-grabando {
+
+    margin: 22px auto;
+
+    display: block;
+
+    border: none;
+
+    background: linear-gradient(180deg,
+            var(--azul1),
+            var(--azul2));
+
+    color: white;
+
+    padding: 18px 42px;
+
+    border-radius: 50px;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+
+    box-shadow: 0px 10px 25px var(--sombra);
+}
+
+.btn-grabando:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0px 0px 25px rgba(77, 141, 255, 0.8);
+}
+
+/* CONTROLES */
+
+.controles {
+
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.controles button {
+
+    border: none;
+
+    background: linear-gradient(180deg,
+            #2f3f80,
+            #10183e);
+
+    color: white;
+
+    padding: 18px 30px;
+
+    border-radius: 40px;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.controles button:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+}
+
+/* DERECHA */
+
+.texto-box {
+    width: 50%;
+}
+
+.texto-box h2 {
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+}
+
+.azul {
+    color: #23a9ff;
+}
+
+.punto {
+
+    width: 12px;
+    height: 12px;
+
+    background: #23a9ff;
+
+    border-radius: 50%;
+
+    display: inline-block;
+
+    margin-right: 10px;
+}
+
+/* TEXTO */
+
+.texto-traduccion {
+
+    width: 100%;
+    min-height: 280px;
+
+    background: var(--card2);
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    font-size: 35px;
+
+    line-height: 1.6;
+
+    border: 1px solid var(--borde);
+
+    box-shadow: inset 0px 0px 20px rgba(0,0,0,0.2);
+
+    backdrop-filter: blur(10px);
+}
+
+/* ESCUCHAR */
+
+.btn-escuchar {
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    border: none;
+
+    background: linear-gradient(180deg,
+            var(--verde1),
+            var(--verde2));
+
+    color: white;
+
+    padding: 26px;
+
+    font-size: 38px;
+    font-weight: bold;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    transition: 0.35s ease;
+
+    box-shadow: 0px 10px 30px var(--sombra);
+}
+
+.btn-escuchar:hover {
+
+    transform: translateY(-8px) scale(1.02);
+
+    box-shadow: 0px 18px 40px rgba(36, 212, 67, 0.55);
+}
+
+/* ESTADO */
+
+.estado {
+
+    margin-top: 35px;
+
+    font-size: 28px;
+
+    color: #1eff54;
+
+    animation: aparecer 1s ease;
+}
+
+.estado i {
+    margin-right: 10px;
+}
+
+/* ========================= */
+/* ANIMACIONES */
+/* ========================= */
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flotar {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media(max-width: 1100px) {
+
+    .contenedor-traductor {
+
+        flex-direction: column;
+    }
+
+    .camara-box,
+    .texto-box {
+
+        width: 100%;
+    }
+
+    .contenido-inicio h1 {
+
+        font-size: 48px;
+    }
+
+    .btn-empezar {
+
+        font-size: 24px;
+    }
+
+    .texto-traduccion {
+
+        font-size: 24px;
+    }
+
+    .btn-escuchar {
+
+        font-size: 28px;
+    }
+
+}
