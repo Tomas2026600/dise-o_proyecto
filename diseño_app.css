@@ -565,3 +565,34 @@ body.light {
     }
 
 }
+.contenido-inicio input{
+
+    width:380px;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    outline:none;
+
+    margin:8px;
+
+}
+
+#mensaje{
+
+    color:#ff6565;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-top:20px;
+
+}

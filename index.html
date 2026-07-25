@@ -25,25 +25,52 @@
     <!-- ========================= -->
 
     <section id="pantallaInicio" class="pantalla activa">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <div class="contenido-inicio">
 
-            <h1>Hola, bienvenido</h1>
+       <div class="contenido-inicio">
 
-            <button class="btn-empezar" onclick="mostrarTraductor()">
-                <i class="fa-solid fa-play"></i>
-                Empezar a traducir
-            </button>
+    <h1>Hola, bienvenido</h1>
 
-            <div class="menu-inferior">
-                <span><i class="fa-solid fa-file-lines"></i> Transcripción</span>
+    <input
+        type="text"
+        id="usuario"
+        placeholder="Usuario">
 
-                <span><i class="fa-solid fa-wave-square"></i> Audio</span>
+    <br><br>
 
-                <span><i class="fa-solid fa-gear"></i> Configuración</span>
-            </div>
+    <input
+        type="password"
+        id="password"
+        placeholder="Inserte sus Credenciales de INSOR">
 
-        </div>
+    <br><br>
+
+    <button
+        class="btn-empezar"
+        onclick="iniciarSesion()">
+
+        <i class="fa-solid fa-lock"></i>
+
+        Iniciar sesión
+
+    </button>
+
+    <br><br>
+
+    <p id="mensaje"></p>
+
+    <div class="menu-inferior">
+
+        <span><i class="fa-solid fa-file-lines"></i>Transcripción</span>
+
+        <span><i class="fa-solid fa-wave-square"></i>Audio</span>
+
+        <span><i class="fa-solid fa-gear"></i>Configuración</span>
+
+    </div>
+
+</div>
 
     </section>
 
@@ -91,18 +118,18 @@
             </div>
 
 
-            <!-- DERECHA -->
-            <div class="texto-box">
+            <!-- DERECHA -->    
+            <div class="texto-box"> 
 
-                <h2>
-                    <span class="punto"></span>
-                    Traducción a <span class="azul">texto</span>
-                </h2>
+                <h2>    
+                    <span class="punto"></  span>
+                    Traducción a <span cla  ss="azul">texto</span>
+                </h2>   
 
-                <div class="texto-traduccion">
-                    Hola, ¿cómo estás?<br><br>
-                    Bienvenido al traductor de lenguaje de señas.
-                </div>
+                <div class="texto-traducci  on">
+                    Hola, ¿cómo estás?<br>  <br>
+                    Bienvenido al traducto  r de lenguaje de señas.
+                </div>  
 
                 <button class="btn-escuchar">
                     <i class="fa-solid fa-volume-high"></i>
@@ -145,6 +172,57 @@
             document.getElementById("pantallaTraductor")
                 .classList.add("activa");
         }
+        function iniciarSesion(){
+
+    let usuario=document.getElementById("usuario").value;
+
+    let password=document.getElementById("password").value;
+
+    if(usuario!="usuarioInsor"){
+
+        document.getElementById("mensaje").innerHTML="Usuario incorrecto";
+
+        return;
+
+    }
+
+    $.post(
+
+        "https://espaciointernet.com/almacenamientoGen/retornaid.php",
+
+        {
+
+            id:"usuarioInsor"
+
+        }
+
+    )
+
+    .done(function(data){
+
+        let datoRecibido=data.split("_")[0];
+
+        if(password==datoRecibido){
+
+            mostrarTraductor();
+
+        }
+
+        else{
+
+            document.getElementById("mensaje").innerHTML="Contraseña incorrecta";
+
+        }
+
+    })
+
+    .fail(function(){
+
+        document.getElementById("mensaje").innerHTML="No fue posible conectar con el servidor";
+
+    });
+
+}
 
 
         // MODO OSCURO / CLARO
@@ -169,6 +247,7 @@
                 icono.className = "fa-solid fa-moon";
             }
         }
+
 
     </script>
 
