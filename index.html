@@ -158,9 +158,21 @@
         </div>
 
     </section>
-
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
     <script>
+
+       const SUPABASE_URL = "https://fszukkcugfcouhbwfydc.supabase.co";
+       const SUPABASE_KEY = "sb_publishable_SE3pUBnW7snv9kPhEYdjpQ_SrkZ3c1m";
+
+      const supabaseClient = supabase.createClient(
+      SUPABASE_URL,
+     SUPABASE_KEY
+    );
+
+
+    
 
         // CAMBIAR PANTALLA
 
@@ -172,57 +184,47 @@
             document.getElementById("pantallaTraductor")
                 .classList.add("activa");
         }
-        function iniciarSesion(){
+         async function iniciarSesion() {
 
-    let usuario=document.getElementById("usuario").value;
+    let usuario = document.getElementById("usuario").value;
+    let password = document.getElementById("password").value;
 
-    let password=document.getElementById("password").value;
+    if (usuario === "") {
 
-    if(usuario!="usuarioInsor"){
-
-        document.getElementById("mensaje").innerHTML="Usuario incorrecto";
+        document.getElementById("mensaje").innerHTML =
+            "Ingrese el usuario";
 
         return;
-
     }
 
-    $.post(
+    if (password === "") {
 
-        "https://espaciointernet.com/almacenamientoGen/retornaid.php",
+        document.getElementById("mensaje").innerHTML =
+            "Ingrese la contraseña";
 
-        {
+        return;
+    }
 
-            id:"usuarioInsor"
+    const { data, error } = await supabaseClient
+        .from("Usuarios")
+        .select("*")
+        .eq("id", usuario)
+        .eq("contraseña", password)
+        .single();
 
-        }
+    if (error || !data) {
 
-    )
+        document.getElementById("mensaje").innerHTML =
+            "Usuario o contraseña incorrectos";
 
-    .done(function(data){
+        console.error(error);
 
-        let datoRecibido=data.split("_")[0];
+        return;
+    }
 
-        if(password==datoRecibido){
-
-            mostrarTraductor();
-
-        }
-
-        else{
-
-            document.getElementById("mensaje").innerHTML="Contraseña incorrecta";
-
-        }
-
-    })
-
-    .fail(function(){
-
-        document.getElementById("mensaje").innerHTML="No fue posible conectar con el servidor";
-
-    });
-
+    mostrarTraductor();
 }
+
 
 
         // MODO OSCURO / CLARO
