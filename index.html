@@ -205,8 +205,8 @@
         return;
     }
     
-    const.log(usuario);
-    const.log(contraseña);
+    console.log(usuario);
+    console.log(password);
 
     const { data, error } = await supabaseClient
         .from("Usuarios")
