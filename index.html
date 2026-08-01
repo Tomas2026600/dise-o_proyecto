@@ -208,7 +208,7 @@
     const { data, error } = await supabaseClient
         .from("Usuarios")
         .select("*")
-        .eq("id", usuario)
+        .eq("identificador", usuario)
         .eq("contraseña", password)
         .single();
 
